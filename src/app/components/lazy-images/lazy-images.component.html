@@ -1,0 +1,13 @@
+<img
+  [src]="imageUrl"
+  (load)="onLoad()"
+  class="card-img-top image-pixa"
+  [alt]="imageTags"
+  [ngStyle]="{ display: hasLoaded ? '' : 'none' }"
+/>
+<img
+  *ngIf="!hasLoaded"
+  src="/assets/spinning-circles.svg"
+  class="loader"
+  alt="Spinner"
+/>

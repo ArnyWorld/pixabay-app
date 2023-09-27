@@ -1,0 +1,57 @@
+<app-spinner *ngIf="loading"></app-spinner>
+<h2 *ngIf="!loading" class="mb-3">{{ title }}</h2>
+<div *ngIf="!loading" class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let image of listImages">
+    <div class="card h-100">
+      <!-- <img
+        [src]="image.largeImageURL"
+        class="card-img-top image-pixa"
+        alt="image.tags"
+      /> -->
+      <lazy-images
+        class="image-lazy"
+        [imageUrl]="image.largeImageURL"
+        [imageTags]="image.tags"
+      ></lazy-images>
+      <div class="card-body text-center">
+        <a [href]="image.largeImageURL" target="_blank" class="btn btn-success"
+          >VER IMAGEN</a
+        >
+      </div>
+      <div class="card-footer text-muted text-center">
+        <div class="row">
+          <div class="col">
+            <p><b>Likes</b></p>
+            <span class="badge bg-success">{{ image.likes }}</span>
+          </div>
+          <div class="col">
+            <p><b>Views</b></p>
+            <span class="badge bg-info">{{ image.views }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="listImages.length > 0 && !loading">
+  <ul class="pagination py-3 d-flex justify-content-center">
+    <button
+      class="btn btn-primary"
+      [disabled]="pageCurrent == 1 ? true : false"
+      (click)="pageBefore()"
+    >
+      &laquo;
+    </button>
+    <li class="page-item">
+      <a class="page-link" href="#">{{ pageCurrent }}</a>
+    </li>
+    <button
+      class="btn btn-primary"
+      [disabled]="pageCurrent == calculatePage ? true : false"
+      (click)="pageNext()"
+    >
+      &raquo;
+    </button>
+  </ul>
+</div>

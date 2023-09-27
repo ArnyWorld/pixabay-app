@@ -1,0 +1,13 @@
+.image-lazy{
+  width: 100%;
+}
+.image-pixa{
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.loader{
+
+  display: block;
+
+}
